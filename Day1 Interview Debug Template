@@ -1,0 +1,187 @@
+# Day 1: Python Interview & Debugging Template
+# Create a file: day1_interview_debug.py
+
+# =========================
+# Part 1: Conceptual Questions
+# =========================
+# Q1: Variables & Data Types
+# Q2: Control Flow & Loops
+# Q3: Functions
+# Q4: Big-O Examples
+
+
+# =========================
+# Part 2: Coding Questions
+# =========================
+# Problem 1: Palindrome Check
+def is_palindrome(s):
+    # TODO: implement
+    #Using slicing
+    #return s == s[::-1]
+    
+    #Using Loop
+    for i in range(len(s)//2):
+        if s[i] != s[-i-1]: 
+            return False
+        return True
+
+phrase = input("enter a number or phrase and I'll tell you if its paliondrome: ")
+print(is_palindrome(phrase))
+pass
+
+
+# Problem 2: Sum of Numbers
+def sum_numbers(n):
+    # TODO: implement
+    total = 0
+    for i in range(n+1):
+        total += i
+    return total
+
+LimitEntered = input("Enter the number you wish to sum starting from 0: ")
+if LimitEntered.isdigit(): 
+    Limit = int(LimitEntered)
+    print("Your total is", sum_numbers(Limit))
+else:
+    print("Enter a valid number dude!!")
+
+#Correct, works fine.
+#Time Complexity: O(n)
+#Improvement: Could use formula n*(n+1)//2 → O(1)
+#def sum_numbers(n):    
+    #return n*(n+1)//2   
+    pass
+
+# Problem 3: Factorial
+def factorial(n):
+    # TODO: implement
+
+#can return 0! here>>>
+    if n == 0: 
+        return 1
+    f=1
+    for i in range(2,n+1):
+        f *= i
+    return (f)
+fact = int(input("Enter the number you wish to get factorial for: "))
+print ("your factorial is", factorial(fact))
+
+#Edge Case: handled 0! outside the function → good.
+#Alternative: Could handle 0! inside function:
+
+# What is recursion?
+
+# Recursion is when a function calls itself to solve a smaller version of the same problem.
+
+# Instead of using a loop, you “break the problem down” until a base case is reached.
+
+# 2️⃣ Factorial Example Recursively
+
+# The factorial definition is perfect for recursion:
+
+# 𝑛! = 𝑛 × (𝑛−1)!
+# n!=n×(n−1)!
+
+# Base case: 0! = 1
+
+# def factorial_recursive(n):
+#     if n == 0:
+#         return 1
+#     else:
+#         return n * factorial_recursive(n-1)
+
+
+# Example:
+
+# print(factorial_recursive(5))  # Output: 120
+
+# 3️⃣ Time and Space Complexity
+# Approach	Time Complexity	Space Complexity
+# Iterative	O(n)	O(1) (constant)
+# Recursive	O(n)	O(n) (stack frames for each call)
+
+# Recursive version uses call stack, so for very large n, it can cause stack overflow.
+
+# Iterative version is safer for large numbers.
+
+pass
+
+
+# =========================
+# Part 3: Debugging Scenarios (Fresh for practice)
+# =========================
+
+for i in range(10):  # Task: print numbers 1-10 correctly
+    print(i+1)
+
+# Scenario 2: Function Logic
+def multiply_by_two(n):
+   return n * 2  # Fix: needs return statement
+result = multiply_by_two(5)
+print(result)
+
+# Scenario 3: String/Number Confusion
+num = int(input("Enter a number: "))
+total = num + 10  # Fix: convert num to int
+print(total)
+
+# Scenario 4: Boolean/Comparison Mistake
+age = int(input("Enter age: "))
+if age > 18:  # Fix: convert age to int first
+    print("Adult")
+else:
+    print("Minor")
+
+# Scenario 5: Simple Index Error
+my_list = [10, 20, 30]
+print(my_list[2])  # Fix: highest valid index is 2
+
+#Debugging Scenarios
+#Scenario 1 → Corrected (i+1) ✅
+#Scenario 2 → Corrected return ✅
+#Scenario 3 → Converted input to int ✅
+#Scenario 4 → Converted input to int ✅
+#Scenario 5 → Fixed index ✅
+# Scenario 1: Off-by-One Loop
+
+# =========================
+# Part 4: Scenario Question (Problem Solving Thinking)
+# =========================
+numbers = [1, 2, 3, 4, 5]
+# Sum using loop
+# TODO: implement
+sum = 0
+for i in range (len(numbers)):
+    sum += numbers[i]
+print(sum)
+
+# Sum using Python built-in
+numbers = [1, 2, 3, 4, 5]
+# TODO: implement
+print(sum(numbers))
+# Compare efficiency
+# TODO: write notes
+
+####Built-in sum(numbers) → O(n) in Python actually, not O(1).
+###Python’s sum() still iterates internally → O(n).
+###But much cleaner and less error-prone.
+
+# =========================
+# Notes:
+# - Watch out for method calls ()
+# - Convert input strings to int/float before arithmetic
+# - Check user input using isdigit() or isnumeric() before conversion
+# - Be mindful of off-by-one errors in loops
+# - Functions need return if you want to capture result
+
+
+#######################################################################################
+# Follow-up Interview-style Questions
+
+# How would you modify the palindrome function to ignore spaces and punctuation?
+
+# What if the sum_numbers input is very large, like 10^12? Would your loop approach still work efficiently?
+
+# Can factorial be implemented recursively? What’s the pros/cons vs Loop 
+
+####################################################################################
