@@ -43,13 +43,17 @@ print(unique_letters("Here we go!!"))
 def unique_letters(text):
     counts = {}
     for char in text:
-        if char in counts:
-            counts[char] += 1
-        elif char == ' ': 
+    #     if char in counts:
+    #         counts[char] += 1
+    #     elif char == ' ': 
+    #         continue
+    #     else:
+    #         counts[char] = 1
+    # return counts
+        if char == ' ':
             continue
-        else:
-            counts[char] = 1
-    return counts
+        counts[char] = counts.get(char, 0) + 1
+
 
 print(unique_letters("Here we go!!"))
 
@@ -164,15 +168,15 @@ print(sd)
 # {'e': 3, ' ': 2, '!': 2, 'H': 1, 'r': 1, 'w': 1, 'g': 1, 'o': 1}
 
 # 🧩 Final Polished Version (All Improvements Combined)
-# def unique_letters(text):
-#     counts = {}
-#     for char in text:
-#         if char == ' ':
-#             continue
-#         counts[char] = counts.get(char, 0) + 1
-#     return dict(sorted(counts.items(), key=lambda item: item[1], reverse=True))
+def unique_letters(text):
+    counts = {}
+    for char in text:
+        if char == ' ':
+            continue
+        counts[char] = counts.get(char, 0) + 1
+    return dict(sorted(counts.items(), key=lambda item: item[1], reverse=True))
 
-# print(unique_letters("Here we go!!"))
+print(unique_letters("Here we go!!"))
 
 
 # Output ✅:
