@@ -1,16 +1,17 @@
-##function that takes a number and prints all even numbers from 0 to that number. Well I'll throw in the sum of all nums from 0 as well!!
+def unique_letters (text):
+    counts = {}
+    for char in text:
+        if char in counts:
+            counts[char] += 1
+        elif char == ' ': 
+            pass
+        else:
+            counts[char] = 1
+    return counts
 
-def sum(num):
-    total = 0
-    for i in range(num+1):
-        total += i
-        if i % 2 == 0: print(i)       
-    return total
+x = unique_letters("Here we go!!")
+max = list(x.keys())
+max.sort()
 
-LimitEntered = input("Enter the number you wish to sum starting from 0: ")
-if LimitEntered.isdigit(): 
-    Limit = int(LimitEntered)
-    print("\nOkay so here are the even numbers: \n")
-    print("Your total is", sum(Limit))
-else:
-    print("Enter a valid number dude!!")
+sd = {i: x[i] for i in max}
+print(sd)
